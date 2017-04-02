@@ -1,0 +1,166 @@
+<html><head></head><body><div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a href="https://github.com/johnpapa/lite-server#readme">lite-server (v2.3.0)</a>
+</h1>
+<h4>Lightweight development node server for serving a web app, providing a fallback for browser history API, loading in the browser, and injecting scripts on the fly.</h4>
+<div class="apidocSectionDiv"><a href="#apidoc.tableOfContents" id="apidoc.tableOfContents"><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.lite-server">module lite-server</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.lite-server.server">
+            function <span class="apidocSignatureSpan">lite-server.</span>server
+            <span class="apidocSignatureSpan">(opts, cb)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">lite-server.</span>defaults</span>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.lite-server" id="apidoc.module.lite-server">module lite-server</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.lite-server.server" id="apidoc.element.lite-server.server">
+        function <span class="apidocSignatureSpan">lite-server.</span>server
+        <span class="apidocSignatureSpan">(opts, cb)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function start(opts, cb) {
+  opts = opts || {};
+  opts.argv = opts.argv || process.argv;
+  opts.console = opts.console || console;
+  cb = cb || function noop() { };
+
+  // Load configuration
+  var argv = require('minimist')(opts.argv.slice(2));
+  var bsConfigName = argv.c || argv.config || 'bs-config';
+
+  // Load optional browser-sync config file from user's project dir
+  var bsConfigPath = path.resolve(bsConfigName);
+  var overrides = {};
+  try {
+    overrides = require(bsConfigPath);
+  } catch (err) {
+    if (err.code &amp;&amp; err.code === 'MODULE_NOT_FOUND') {
+      logMissingConfigFile();
+    } else {
+      throw (err);
+    }
+  }
+
+  // Set optional baseDir
+  config.server.baseDir = argv.baseDir || config.server.baseDir;
+
+  if (typeof overrides === 'function') {
+    overrides = overrides(browserSync);
+  }
+
+  _.merge(config, overrides);
+
+  // Fixes browsersync error when overriding middleware array
+  if (config.server.middleware) {
+    config.server.middleware = _.compact(config.server.middleware);
+  }
+
+  logConfig();
+
+  // Run browser-sync
+  browserSync.init(config, cb);
+
+  return browserSync;
+
+  function logEnabled() {
+    return config.logLevel !== 'silent';
+  }
+
+  function logConfig() {
+    if (logEnabled()) {
+      opts.console.log('** browser-sync config **');
+      opts.console.log(config);
+    }
+  }
+
+  function logMissingConfigFile() {
+    if (logEnabled()) {
+      opts.console.info(
+        'Did not detect a `bs-config.json` or `bs-config.js` override file.' +
+        ' Using lite-server defaults...'
+      );
+    }
+  }
+
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
+</body></html>
