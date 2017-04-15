@@ -1,11 +1,13 @@
 # api documentation for  [lite-server (v2.3.0)](https://github.com/johnpapa/lite-server#readme)  [![npm package](https://img.shields.io/npm/v/npmdoc-lite-server.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-lite-server) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-lite-server.svg)](https://travis-ci.org/npmdoc/node-npmdoc-lite-server)
 #### Lightweight development node server for serving a web app, providing a fallback for browser history API, loading in the browser, and injecting scripts on the fly.
 
-[![NPM](https://nodei.co/npm/lite-server.png?downloads=true)](https://www.npmjs.com/package/lite-server)
+[![NPM](https://nodei.co/npm/lite-server.png?downloads=true&downloadRank=true&stars=true)](https://www.npmjs.com/package/lite-server)
 
-[![apidoc](https://npmdoc.github.io/node-npmdoc-lite-server/build/screen-capture.buildNpmdoc.browser._2Fhome_2Ftravis_2Fbuild_2Fnpmdoc_2Fnode-npmdoc-lite-server_2Ftmp_2Fbuild_2Fapidoc.html.png)](https://npmdoc.github.io/node-npmdoc-lite-server/build..beta..travis-ci.org/apidoc.html)
+[![apidoc](https://npmdoc.github.io/node-npmdoc-lite-server/build/screenCapture.buildCi.browser.apidoc.html.png)](https://npmdoc.github.io/node-npmdoc-lite-server/build/apidoc.html)
 
-![package-listing](https://npmdoc.github.io/node-npmdoc-lite-server/build/screen-capture.npmPackageListing.svg)
+![npmPackageListing](https://npmdoc.github.io/node-npmdoc-lite-server/build/screenCapture.npmPackageListing.svg)
+
+![npmPackageDependencyTree](https://npmdoc.github.io/node-npmdoc-lite-server/build/screenCapture.npmPackageDependencyTree.svg)
 
 
 
@@ -22,12 +24,10 @@
     },
     "contributors": [
         {
-            "name": "John Papa",
-            "email": "john@johnpapa.net"
+            "name": "John Papa"
         },
         {
-            "name": "Christopher Martin",
-            "email": "cgmartin@gmail.com"
+            "name": "Christopher Martin"
         }
     ],
     "dependencies": {
@@ -63,13 +63,11 @@
     "main": "index.js",
     "maintainers": [
         {
-            "name": "johnpapa",
-            "email": "john@johnpapa.net"
+            "name": "johnpapa"
         }
     ],
     "name": "lite-server",
     "optionalDependencies": {},
-    "readme": "ERROR: No README data found!",
     "repository": {
         "type": "git",
         "url": "git+https://github.com/johnpapa/lite-server.git"
