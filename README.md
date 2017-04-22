@@ -1,9 +1,14 @@
-# api documentation for  [lite-server (v2.3.0)](https://github.com/johnpapa/lite-server#readme)  [![npm package](https://img.shields.io/npm/v/npmdoc-lite-server.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-lite-server) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-lite-server.svg)](https://travis-ci.org/npmdoc/node-npmdoc-lite-server)
+# npmdoc-lite-server
+
+#### api documentation for  [lite-server (v2.3.0)](https://github.com/johnpapa/lite-server#readme)  [![npm package](https://img.shields.io/npm/v/npmdoc-lite-server.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-lite-server) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-lite-server.svg)](https://travis-ci.org/npmdoc/node-npmdoc-lite-server)
+
 #### Lightweight development node server for serving a web app, providing a fallback for browser history API, loading in the browser, and injecting scripts on the fly.
 
 [![NPM](https://nodei.co/npm/lite-server.png?downloads=true&downloadRank=true&stars=true)](https://www.npmjs.com/package/lite-server)
 
-[![apidoc](https://npmdoc.github.io/node-npmdoc-lite-server/build/screenCapture.buildCi.browser.apidoc.html.png)](https://npmdoc.github.io/node-npmdoc-lite-server/build/apidoc.html)
+- [https://npmdoc.github.io/node-npmdoc-lite-server/build/apidoc.html](https://npmdoc.github.io/node-npmdoc-lite-server/build/apidoc.html)
+
+[![apidoc](https://npmdoc.github.io/node-npmdoc-lite-server/build/screenCapture.buildCi.browser.%252Ftmp%252Fbuild%252Fapidoc.html.png)](https://npmdoc.github.io/node-npmdoc-lite-server/build/apidoc.html)
 
 ![npmPackageListing](https://npmdoc.github.io/node-npmdoc-lite-server/build/screenCapture.npmPackageListing.svg)
 
@@ -77,92 +82,6 @@
     },
     "version": "2.3.0"
 }
-```
-
-
-
-# <a name="apidoc.tableOfContents"></a>[table of contents](#apidoc.tableOfContents)
-
-#### [module lite-server](#apidoc.module.lite-server)
-1.  [function <span class="apidocSignatureSpan">lite-server.</span>server (opts, cb)](#apidoc.element.lite-server.server)
-1.  object <span class="apidocSignatureSpan">lite-server.</span>defaults
-
-
-
-# <a name="apidoc.module.lite-server"></a>[module lite-server](#apidoc.module.lite-server)
-
-#### <a name="apidoc.element.lite-server.server"></a>[function <span class="apidocSignatureSpan">lite-server.</span>server (opts, cb)](#apidoc.element.lite-server.server)
-- description and source-code
-```javascript
-function start(opts, cb) {
-  opts = opts || {};
-  opts.argv = opts.argv || process.argv;
-  opts.console = opts.console || console;
-  cb = cb || function noop() { };
-
-  // Load configuration
-  var argv = require('minimist')(opts.argv.slice(2));
-  var bsConfigName = argv.c || argv.config || 'bs-config';
-
-  // Load optional browser-sync config file from user's project dir
-  var bsConfigPath = path.resolve(bsConfigName);
-  var overrides = {};
-  try {
-    overrides = require(bsConfigPath);
-  } catch (err) {
-    if (err.code && err.code === 'MODULE_NOT_FOUND') {
-      logMissingConfigFile();
-    } else {
-      throw (err);
-    }
-  }
-
-  // Set optional baseDir
-  config.server.baseDir = argv.baseDir || config.server.baseDir;
-
-  if (typeof overrides === 'function') {
-    overrides = overrides(browserSync);
-  }
-
-  _.merge(config, overrides);
-
-  // Fixes browsersync error when overriding middleware array
-  if (config.server.middleware) {
-    config.server.middleware = _.compact(config.server.middleware);
-  }
-
-  logConfig();
-
-  // Run browser-sync
-  browserSync.init(config, cb);
-
-  return browserSync;
-
-  function logEnabled() {
-    return config.logLevel !== 'silent';
-  }
-
-  function logConfig() {
-    if (logEnabled()) {
-      opts.console.log('** browser-sync config **');
-      opts.console.log(config);
-    }
-  }
-
-  function logMissingConfigFile() {
-    if (logEnabled()) {
-      opts.console.info(
-        'Did not detect a 'bs-config.json' or 'bs-config.js' override file.' +
-        ' Using lite-server defaults...'
-      );
-    }
-  }
-
-}
-```
-- example usage
-```shell
-n/a
 ```
 
 
